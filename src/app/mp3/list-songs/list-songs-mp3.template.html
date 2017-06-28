@@ -1,0 +1,39 @@
+<md-card class="example-card" >
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>{{song}}</md-card-title>
+    <md-card-subtitle>Author</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <!-- <img md-card-image [src]="imageAlbum"> -->
+    <md-progress-bar mode="determinate" [value]="now">
+       </md-progress-bar>
+
+  </md-card-content>
+  <md-card-actions class="mediaPlayerBottomFab">
+
+
+    <button md-mini-fab>
+      <md-icon class="md-24" (click)="musicRewind()">fast_rewind</md-icon>
+    </button>
+    <button md-fab *ngIf="audio.paused === true" (click)="musicPausePlay()">
+      <md-icon class="md-24">play_arrow</md-icon>
+    </button>
+    <button md-fab *ngIf="audio.paused === false" (click)="musicPausePlay();">
+      <md-icon class="md-24">pause</md-icon>
+    </button>
+    <button md-mini-fab>
+      <md-icon class="md-24" (click)="musicForward()">fast_forward</md-icon>
+    </button>
+    <button md-mini-fab *ngIf="audio.muted === true" (click)="musicMuted();">
+      <md-icon class="md-24">volume_off</md-icon>
+    </button>
+    <button md-mini-fab *ngIf="audio.muted === false" (click)="musicMuted();">
+      <md-icon class="md-24">volume_up</md-icon>
+    </button>
+    <button md-mini-fab>
+      <a href="#" class="noLink" [download]="audio.src"><md-icon class="md-24">get_app</md-icon></a>
+    </button>
+    <md-slider class="" max="100" min="0" [(ngModel)]="statusVolume" (ngModelChange)="musicSetAudio();" thumb-label="true"></md-slider>
+  </md-card-actions>
+</md-card>
